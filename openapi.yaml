@@ -93,29 +93,6 @@ paths:
                 anyOf:
                   - $ref: "#/components/schemas/RetWhetherTyMokPoll"
                   - $ref: "#/components/schemas/NonLegalError"
-  /decision/main:
-    post:
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              additionalProperties: false
-              required:
-                - message
-              properties:
-                message:
-                  $ref: "#/components/schemas/Main"
-
-      responses:
-        200:
-          description: "Success"
-          content:
-            application/json:
-              schema:
-                anyOf:
-                  - $ref: "#/components/schemas/RetMainDecision"
-                  - $ref: "#/components/schemas/Error"
 components:
   schemas:
     Error:
@@ -436,11 +413,6 @@ components:
             type:
               enum: ["NotYetDetermined"]
         - $ref: '#/components/schemas/Error'
-    Main:
-      anyOf:
-        - $ref: '#/components/schemas/InfAfterStep'
-        - $ref: '#/components/schemas/NormalNonTamMove'
-        - $ref: '#/components/schemas/TamMove'
     InfAfterStep:
       type: object
       additionalProperties: false
@@ -566,3 +538,4 @@ components:
               $ref: '#/components/schemas/AbsoluteCoord'
             secondDest:
               $ref: '#/components/schemas/AbsoluteCoord'
+    
